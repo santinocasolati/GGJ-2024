@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 6972425505989595464}
   - component: {fileID: 349686084911299119}
   - component: {fileID: 4900856516116430159}
+  - component: {fileID: 1700445658004878146}
   m_Layer: 0
   m_Name: Martillo
   m_TagString: Player
@@ -319,3 +320,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.6339896, y: 8.898615, z: 1.7202003}
   m_Center: {x: 0.014507769, y: -3.6237254, z: 0.02007071}
+--- !u!95 &1700445658004878146
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9180903106179381028}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d6e0e71648ea2d64d91718a07e6acea5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
