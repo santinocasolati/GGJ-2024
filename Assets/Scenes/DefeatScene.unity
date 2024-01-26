@@ -176,7 +176,6 @@ GameObject:
   - component: {fileID: 149087093}
   - component: {fileID: 149087092}
   - component: {fileID: 149087091}
-  - component: {fileID: 149087094}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -248,10 +247,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 149087094}
-        m_TargetAssemblyTypeName: ExitGame, Assembly-CSharp
-        m_MethodName: Exit
-        m_Mode: 1
+      - m_Target: {fileID: 389833124}
+        m_TargetAssemblyTypeName: MainMenuTransition, Assembly-CSharp
+        m_MethodName: StartTransition
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -298,18 +297,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149087089}
   m_CullTransparentMesh: 1
---- !u!114 &149087094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149087089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31762d05bdae8a743b3c8872399365f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &176610062
 GameObject:
   m_ObjectHideFlags: 0
