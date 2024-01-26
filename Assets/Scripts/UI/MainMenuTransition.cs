@@ -16,13 +16,17 @@ public class MainMenuTransition : MonoBehaviour
     public TMP_Text[] texts;
     public Image blackScreen;
 
-    public void StartTransition()
+    public void StartTransition(int sceneIndex)
     {
-        cLook.enabled = false;
-        StartCoroutine(FadeCanvas());
+        if (cLook != null)
+        {
+            cLook.enabled = false;
+        }
+        
+        StartCoroutine(FadeCanvas(sceneIndex));
     }
 
-    private IEnumerator FadeCanvas()
+    private IEnumerator FadeCanvas(int sceneIndex)
     {
         float elapsedTime = 0f;
 
@@ -31,8 +35,11 @@ public class MainMenuTransition : MonoBehaviour
             float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeDuration);
             SetAlpha(alpha);
 
-            Quaternion boneRot = Quaternion.Lerp(bone.localRotation, Quaternion.Euler(Vector3.zero), elapsedTime / fadeDuration);
-            bone.localRotation = boneRot;
+            if (bone != null)
+            {
+                Quaternion boneRot = Quaternion.Lerp(bone.localRotation, Quaternion.Euler(Vector3.zero), elapsedTime / fadeDuration);
+                bone.localRotation = boneRot;
+            }
 
             elapsedTime += Time.deltaTime;
             yield return null;
@@ -42,7 +49,7 @@ public class MainMenuTransition : MonoBehaviour
 
         yield return new WaitForSeconds(waitTimeAfterFade);
 
-        yield return StartCoroutine(MoveCameraToTargetPosition());
+        yield return StartCoroutine(MoveCameraToTargetPosition(sceneIndex));
     }
 
     private void SetAlpha(float alpha)
@@ -62,7 +69,7 @@ public class MainMenuTransition : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveCameraToTargetPosition()
+    private IEnumerator MoveCameraToTargetPosition(int sceneIndex)
     {
         float elapsedTime = 0f;
         Vector3 startingPosition = Camera.main.transform.position;
@@ -83,5 +90,6 @@ public class MainMenuTransition : MonoBehaviour
 
         Camera.main.transform.position = targetCameraPosition;
         blackScreen.color = new Color(0, 0, 0, 1);
+        LevelManager.instance.ChangeScene(sceneIndex);
     }
 }

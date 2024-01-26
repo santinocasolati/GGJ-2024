@@ -11,6 +11,7 @@ public class CursorManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            transform.parent = null;
             DontDestroyOnLoad(gameObject);
         } else
         {
