@@ -8,12 +8,19 @@ using UnityEngine.UIElements;
 
 public class Ranged : Enemy
 {
+    [SerializeField] Transform shootPosition;
     [SerializeField] GameObject projectile;
     private float speed = 1f;
     private float attackDelay = 1f;
     private float range = 5f;
     private float projectileSpeed = 2f;
-    
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = transform.GetChild(0).GetComponent<Animator>();
+    }
+
     private void Update()
     {
         if (player != null && !this.isStunned)
@@ -23,10 +30,26 @@ public class Ranged : Enemy
 
             this.KeepDistances(distanceToPlayer, shouldMoveToPlayer);
 
+            if (distanceToPlayer > 3f)
+            {
+                Quaternion rot = Quaternion.LookRotation(player.transform.position - transform.position);
+                rot.eulerAngles = new Vector3(0, rot.eulerAngles.y, 0);
+                transform.rotation = rot;
+            }
+
+            bool isWalking = false;
+
             if (shouldMoveToPlayer && distanceToPlayer >= range)
+            {
                 transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                isWalking = true;
+            }
             else if (shouldMoveToPlayer && attackTimer >= attackDelay)
+            {
                 this.Attack();
+            }
+
+            animator.SetBool("Walk", isWalking);
 
             attackTimer += Time.deltaTime;
         }
@@ -50,7 +73,6 @@ public class Ranged : Enemy
                 shouldMoveToPlayer = false;
                 Vector3 directionAwayFromEnemy = (transform.position - enemyCollider.transform.position).normalized;
                 transform.Translate(directionAwayFromEnemy * speed * Time.deltaTime);
-                transform.rotation = Quaternion.LookRotation(directionAwayFromEnemy);
 
                 if (attackTimer >= attackDelay && distanceToPlayer <= range)
                     this.Attack();
@@ -62,7 +84,7 @@ public class Ranged : Enemy
     }
     private void Attack()
     {
-        Projectile.ThrowProjectile(this.projectile, this.transform.position, this.transform.rotation, this.player.transform.position, this.projectileSpeed, this.damage);
+        Projectile.ThrowProjectile(this.projectile, this.shootPosition.position, this.transform.rotation, this.player.transform.position, this.projectileSpeed, this.damage);
         attackTimer = 0f;
     }
 }
