@@ -15,6 +15,7 @@ public class Martillo : MonoBehaviour
     void Start()
     {
         CursorManager.instance.HideCursor();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,17 +25,21 @@ public class Martillo : MonoBehaviour
         Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
 
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-        worldPos.y = 1f;
+        worldPos.y = 2f;
         this.transform.position = worldPos;
         
         if (Input.GetMouseButton(0))
-        {
             this.Attack();
-        }
     }
     public void Attack()
-    { 
+    {
+        animator.enabled = true;
+        animator.Play("Hit");
+    }
 
+    private void StopAnimation()
+    {
+        animator.enabled = false;
     }
     public void TakeDamage(int amount)
     {
@@ -55,5 +60,10 @@ public class Martillo : MonoBehaviour
         tr.StartTransition(2);
 
         Destroy(this.gameObject);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy") && animator.enabled)
+            other.gameObject.SendMessage("Die");
     }
 }
