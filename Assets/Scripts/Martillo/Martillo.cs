@@ -7,6 +7,7 @@ public class Martillo : MonoBehaviour
 {
     private int health = 100;
     [SerializeField] GameObject lifeBar;
+    [SerializeField] GameObject transition;
     private Animator animator;
     GameObject panelController;
 
@@ -46,7 +47,13 @@ public class Martillo : MonoBehaviour
     private void Die()
     {
         //panelController.SendMessage("showGameOverPanel", "Game Over");
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
+
+        transition.SetActive(true);
+        MainMenuTransition tr = transition.GetComponent<MainMenuTransition>();
+        tr.targetCameraPosition.x = Camera.main.transform.position.x;
+        tr.StartTransition(2);
+
         Destroy(this.gameObject);
     }
 }

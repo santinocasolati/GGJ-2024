@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 public class Ranged : Enemy
 {
+    [SerializeField] Transform shootPosition;
     [SerializeField] GameObject projectile;
     private float speed = 1f;
     private float attackDelay = 1f;
@@ -83,7 +84,7 @@ public class Ranged : Enemy
     }
     private void Attack()
     {
-        Projectile.ThrowProjectile(this.projectile, this.transform.position, this.transform.rotation, this.player.transform.position, this.projectileSpeed, this.damage);
+        Projectile.ThrowProjectile(this.projectile, this.shootPosition.position, this.transform.rotation, this.player.transform.position, this.projectileSpeed, this.damage);
         attackTimer = 0f;
     }
 }

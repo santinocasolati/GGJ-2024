@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
         Vector3 direction = endPoint - startPoint;
         startPoint += (direction.normalized * 0.2f);
 
-        startPoint.y = 1f;
+        //startPoint.y = 1f;
         GameObject projectileObj = Instantiate(gameObject, startPoint, rotation);
         projectileObj.AddComponent<Projectile>();
 
