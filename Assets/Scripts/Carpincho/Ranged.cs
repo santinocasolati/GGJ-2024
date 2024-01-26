@@ -23,6 +23,13 @@ public class Ranged : Enemy
 
             this.KeepDistances(distanceToPlayer, shouldMoveToPlayer);
 
+            if (distanceToPlayer > 3f)
+            {
+                Quaternion rot = Quaternion.LookRotation(player.transform.position - transform.position);
+                rot.eulerAngles = new Vector3(0, rot.eulerAngles.y, 0);
+                transform.rotation = rot;
+            }
+
             if (shouldMoveToPlayer && distanceToPlayer >= range)
                 transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             else if (shouldMoveToPlayer && attackTimer >= attackDelay)
@@ -50,7 +57,6 @@ public class Ranged : Enemy
                 shouldMoveToPlayer = false;
                 Vector3 directionAwayFromEnemy = (transform.position - enemyCollider.transform.position).normalized;
                 transform.Translate(directionAwayFromEnemy * speed * Time.deltaTime);
-                transform.rotation = Quaternion.LookRotation(directionAwayFromEnemy);
 
                 if (attackTimer >= attackDelay && distanceToPlayer <= range)
                     this.Attack();
