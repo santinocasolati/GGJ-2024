@@ -13,7 +13,7 @@ public class Martillo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
+        CursorManager.instance.HideCursor();
     }
 
     // Update is called once per frame

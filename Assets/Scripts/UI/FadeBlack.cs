@@ -11,6 +11,7 @@ public class FadeBlack : MonoBehaviour
 
     private void Start()
     {
+        CursorManager.instance.ShowCursor();
         image = GetComponent<Image>();
         StartCoroutine(FadeOut());
     }
