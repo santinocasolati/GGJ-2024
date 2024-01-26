@@ -13,7 +13,13 @@ public class Ranged : Enemy
     private float attackDelay = 1f;
     private float range = 5f;
     private float projectileSpeed = 2f;
-    
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = transform.GetChild(0).GetComponent<Animator>();
+    }
+
     private void Update()
     {
         if (player != null && !this.isStunned)
@@ -30,10 +36,19 @@ public class Ranged : Enemy
                 transform.rotation = rot;
             }
 
+            bool isWalking = false;
+
             if (shouldMoveToPlayer && distanceToPlayer >= range)
+            {
                 transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                isWalking = true;
+            }
             else if (shouldMoveToPlayer && attackTimer >= attackDelay)
+            {
                 this.Attack();
+            }
+
+            animator.SetBool("Walk", isWalking);
 
             attackTimer += Time.deltaTime;
         }
