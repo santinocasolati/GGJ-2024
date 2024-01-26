@@ -26,6 +26,6 @@ public class FadeBlack : MonoBehaviour
             yield return null;
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
