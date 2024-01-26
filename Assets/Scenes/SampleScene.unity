@@ -749,6 +749,26 @@ PrefabInstance:
       propertyPath: lifeBar
       value: 
       objectReference: {fileID: 1167195638}
+    - target: {fileID: 1700445658004878146, guid: 467e84f6df7f1a14590a2d2aa33774de,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700445658004878146, guid: 467e84f6df7f1a14590a2d2aa33774de,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700445658004878146, guid: 467e84f6df7f1a14590a2d2aa33774de,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1700445658004878146, guid: 467e84f6df7f1a14590a2d2aa33774de,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2793645321816052448, guid: 467e84f6df7f1a14590a2d2aa33774de,
         type: 3}
       propertyPath: m_TagString

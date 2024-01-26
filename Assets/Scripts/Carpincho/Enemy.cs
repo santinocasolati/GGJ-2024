@@ -16,11 +16,11 @@ public abstract class Enemy : MonoBehaviour
     }
     public void TakeDamage(int amount)
     {
-        StartCoroutine(Stun());
+        /*StartCoroutine(Stun());
         AudioSource enemyAudio = GetComponent<AudioSource>();
         enemyAudio.Play();
         health -= amount;
-        if (health <= 0)
+        if (health <= 0)*/
             Die();
     }
     private void Die()
