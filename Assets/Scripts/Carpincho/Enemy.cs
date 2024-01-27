@@ -13,14 +13,11 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Martillo>();
     }
-    public void TakeDamage(int amount)
+
+    private void Die()
     {
         AudioSource enemyAudio = GetComponent<AudioSource>();
         enemyAudio.Play();
-        Die();
-    }
-    private void Die()
-    {
         ChanceToDropHeart();
         Destroy(this.gameObject);
     }
@@ -29,5 +26,13 @@ public class Enemy : MonoBehaviour
     {
         if (Random.value < 0.1f)
             Instantiate(corazon, transform.position + new Vector3(0,0.3f,0), Quaternion.identity);
+    }
+
+    private void OnTriggerEnter(Collider other) //o oncollision enter ni idea, probé las dos
+    {
+        if (other.gameObject == player)
+        {
+            Die();
+        }
     }
 }

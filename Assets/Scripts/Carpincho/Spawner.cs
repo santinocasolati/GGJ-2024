@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Queue<GameObject> prefabs;
+    [SerializeField] private List<GameObject> prefabs;
     [SerializeField] private GameObject bossPrefab;
     //[SerializeField] TextMeshProUGUI waveText;
     private Martillo player;
@@ -29,8 +29,7 @@ public class Spawner : MonoBehaviour
         {
             for (int i = 0; i < prefabs.Count; i++)
             {
-                GameObject prefabToSpawn = prefabs.Dequeue();
-                prefabs.Enqueue(prefabToSpawn);
+                GameObject prefabToSpawn = prefabs[i];
 
                 for (int j = 0; j < torretaCounter; j++)
                     SpawnEnemy(prefabToSpawn);

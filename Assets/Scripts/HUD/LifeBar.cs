@@ -7,7 +7,7 @@ public class LifeBar : MonoBehaviour
 {
     private float maxHealth = 100f;
     protected float currentHealth = 100f;
-    public Image healthBarImage;
+    [SerializeField] public Image healthBarImage;
 
     private void Start()
     {
@@ -28,10 +28,5 @@ public class LifeBar : MonoBehaviour
     public void Heal(int quantity)
     {
         this.currentHealth += (float)quantity;
-    }
-    public void IncreaseMaxHealth(int quantity)
-    {
-        maxHealth += (float)quantity;
-        currentHealth = (float)quantity;
     }
 }

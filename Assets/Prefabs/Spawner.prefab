@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e2b3eaec0951244384e5585e6532d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torretaPrefab: {fileID: 5384510026854900613, guid: e5f37d41d837e514899c20ab723123e9,
-    type: 3}
-  paracaidasPrefab: {fileID: 0}
+  prefabs:
+  - {fileID: 5384510026854900613, guid: e5f37d41d837e514899c20ab723123e9, type: 3}
+  bossPrefab: {fileID: 0}

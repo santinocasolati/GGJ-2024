@@ -10,8 +10,8 @@ public class Ranged : Enemy
 {
     [SerializeField] Transform shootPosition;
     [SerializeField] GameObject projectile;
-    private float speed = 1f;
-    private float attackDelay = 1f;
+    private float speed = 1.5f;
+    private float attackDelay = 3f;
     private float range = 5f;
     private float projectileSpeed = 2f;
     private Animator animator;

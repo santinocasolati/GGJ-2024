@@ -28,7 +28,6 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, _end, _speed * Time.deltaTime);
-        transform.rotation = Quaternion.LookRotation((transform.position - _end).normalized);
 
         if (transform.position.x == _end.x && transform.position.y == _end.y)
             Destroy(gameObject);

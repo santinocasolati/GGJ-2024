@@ -10,7 +10,7 @@ public class Martillo : MonoBehaviour
     [SerializeField] GameObject transition;
     [SerializeField] Vector2 sens;
     private Animator animator;
-    GameObject panelController;
+
     private bool canAttack = true;
 
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class Martillo : MonoBehaviour
         this.transform.localPosition = localPos;
 
         Vector3 worldPos = this.transform.position;
-        worldPos.y = 1f;
+        worldPos.y = 2.5f;
         worldPos.z += movement.z;
         this.transform.position = worldPos;
 
@@ -110,7 +110,6 @@ public class Martillo : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, targetPosition, transform.position.z);
     }
-
     public void TakeDamage(int amount)
     {
         health -= amount;
@@ -121,9 +120,6 @@ public class Martillo : MonoBehaviour
     }
     private void Die()
     {
-        //panelController.SendMessage("showGameOverPanel", "Game Over");
-        //Time.timeScale = 0;
-
         transition.SetActive(true);
         MainMenuTransition tr = transition.GetComponent<MainMenuTransition>();
         tr.targetCameraPosition.x = Camera.main.transform.position.x;
