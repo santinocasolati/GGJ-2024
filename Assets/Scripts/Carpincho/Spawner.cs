@@ -6,9 +6,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject torretaPrefab;
-    [SerializeField] private GameObject paracaidasPrefab;
-    //[SerializeField] private GameObject bossPrefab;
+    [SerializeField] private Queue<GameObject> prefabs;
+    [SerializeField] private GameObject bossPrefab;
     //[SerializeField] TextMeshProUGUI waveText;
     private Martillo player;
     private int torretaCounter = 3;
@@ -28,20 +27,25 @@ public class Spawner : MonoBehaviour
     {
         if (timeSinceNoEnemies > spawnInterval && waveNumber < 3)
         {
-            for (int i = 0; i < torretaCounter; i++)
+            for (int i = 0; i < prefabs.Count; i++)
             {
-                SpawnEnemy(torretaPrefab);
+                GameObject prefabToSpawn = prefabs.Dequeue();
+                prefabs.Enqueue(prefabToSpawn);
+
+                for (int j = 0; j < torretaCounter; j++)
+                    SpawnEnemy(prefabToSpawn);
+
+                /*for (int k = 0; k < paracaidasCounter; k++)
+                    SpawnEnemy(prefabToSpawn);*/
+                /*for (int l = 0; l < skaterCounter; l++)
+                    SpawnEnemy(prefabToSpawn);*/
+                timeSinceNoEnemies = 0.0f;
+                waveCleared = false;
+                torretaCounter++;
+                paracaidasCounter++;
+                waveNumber++;
+                //waveText.text = $"Wave {waveNumber}/4";
             }
-            /*for (int i = 0; i < paracaidasCounter; i++)
-            {
-                SpawnEnemy(paracaidasPrefab);
-            }*/
-            timeSinceNoEnemies = 0.0f;
-            waveCleared = false;
-            torretaCounter++;
-            paracaidasCounter++;
-            waveNumber++;
-            //waveText.text = $"Wave {waveNumber}/4";
         }
         /*else if (timeSinceNoEnemies > spawnInterval && waveNumber == 3)
         {

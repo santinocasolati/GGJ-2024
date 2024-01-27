@@ -23,7 +23,7 @@ public class Ranged : Enemy
 
     private void Update()
     {
-        if (player != null && !this.isStunned)
+        if (player != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
             bool shouldMoveToPlayer = true;
