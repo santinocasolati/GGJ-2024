@@ -8,8 +8,10 @@ public class Martillo : MonoBehaviour
     private int health = 100;
     [SerializeField] GameObject lifeBar;
     [SerializeField] GameObject transition;
+    [SerializeField] Vector2 sens;
     private Animator animator;
     GameObject panelController;
+    private bool canAttack = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,26 +23,94 @@ public class Martillo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
+        float mouseX = Input.GetAxis("Mouse X") * sens.x;
+        float mouseY = Input.GetAxis("Mouse Y") * sens.y;
 
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-        worldPos.y = 2f;
+        Vector3 movement = new Vector3(mouseX, 0f, mouseY);
+
+        Vector3 localPos = this.transform.localPosition;
+        localPos.x += movement.x;
+        this.transform.localPosition = localPos;
+
+        Vector3 worldPos = this.transform.position;
+        worldPos.y = 1f;
+        worldPos.z += movement.z;
         this.transform.position = worldPos;
+
+
+        //Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
+
+        //Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        //worldPos.y = 1f;
+        //worldPos.x += offset.x;
+        //worldPos.z += offset.y;
+        //this.transform.position = worldPos;
         
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0) && canAttack)
+        {
             this.Attack();
+        }
     }
     public void Attack()
     {
+        canAttack = false;
         animator.enabled = true;
-        animator.Play("Hit");
     }
 
-    private void StopAnimation()
+    public void ResetAttack()
     {
+        canAttack = true;
         animator.enabled = false;
     }
+
+    public void HammerDown()
+    {
+        StartCoroutine(MoveDown());
+    }
+
+    IEnumerator MoveDown()
+    {
+        float startY = transform.position.y;
+        float targetPosition = 0;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 0.16f)
+        {
+            float currentY = Mathf.Lerp(startY, targetPosition, elapsedTime / 0.16f);
+            transform.position = new Vector3(transform.position.x, currentY, transform.position.z);
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.position = new Vector3(transform.position.x, targetPosition, transform.position.z);
+    }
+
+    public void HammerUp()
+    {
+        StartCoroutine(MoveUp());
+    }
+
+    IEnumerator MoveUp()
+    {
+        float startY = transform.position.y;
+        float targetPosition = 1;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 0.16f)
+        {
+            float currentY = Mathf.Lerp(startY, targetPosition, elapsedTime / 0.16f);
+            transform.position = new Vector3(transform.position.x, currentY, transform.position.z);
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        transform.position = new Vector3(transform.position.x, targetPosition, transform.position.z);
+    }
+
     public void TakeDamage(int amount)
     {
         health -= amount;
@@ -60,10 +130,5 @@ public class Martillo : MonoBehaviour
         tr.StartTransition(2);
 
         Destroy(this.gameObject);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Enemy") && animator.enabled)
-            other.gameObject.SendMessage("Die");
     }
 }
