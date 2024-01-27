@@ -298,7 +298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20772f3f08439b40a102fa89515e199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeBar: {fileID: 7085975781728903898, guid: 771b287db383b5d44b35137ae347fa69, type: 3}
+  lifeBar: {fileID: 0}
+  transition: {fileID: 0}
+  offset: {x: 0, y: 0}
 --- !u!65 &4900856516116430159
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -328,12 +330,12 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9180903106179381028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d6e0e71648ea2d64d91718a07e6acea5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
