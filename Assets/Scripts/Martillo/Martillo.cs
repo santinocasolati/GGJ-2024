@@ -8,7 +8,7 @@ public class Martillo : MonoBehaviour
     private int health = 100;
     [SerializeField] GameObject lifeBar;
     [SerializeField] GameObject transition;
-    [SerializeField] Vector2 offset;
+    [SerializeField] Vector2 sens;
     private Animator animator;
     GameObject panelController;
     private bool canAttack = true;
@@ -23,14 +23,28 @@ public class Martillo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
+        float mouseX = Input.GetAxis("Mouse X") * sens.x;
+        float mouseY = Input.GetAxis("Mouse Y") * sens.y;
 
-        Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector3 movement = new Vector3(mouseX, 0f, mouseY);
+
+        Vector3 localPos = this.transform.localPosition;
+        localPos.x += movement.x;
+        this.transform.localPosition = localPos;
+
+        Vector3 worldPos = this.transform.position;
         worldPos.y = 1f;
-        worldPos.x += offset.x;
-        worldPos.z += offset.y;
+        worldPos.z += movement.z;
         this.transform.position = worldPos;
+
+
+        //Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
+
+        //Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+        //worldPos.y = 1f;
+        //worldPos.x += offset.x;
+        //worldPos.z += offset.y;
+        //this.transform.position = worldPos;
         
         if (Input.GetMouseButtonDown(0) && canAttack)
         {
@@ -56,7 +70,7 @@ public class Martillo : MonoBehaviour
 
     IEnumerator MoveDown()
     {
-        float startY = transform.localPosition.y;
+        float startY = transform.position.y;
         float targetPosition = 0;
 
         float elapsedTime = 0f;
@@ -64,13 +78,13 @@ public class Martillo : MonoBehaviour
         while (elapsedTime < 0.16f)
         {
             float currentY = Mathf.Lerp(startY, targetPosition, elapsedTime / 0.16f);
-            transform.localPosition = new Vector3(transform.localPosition.x, currentY, transform.localPosition.z);
+            transform.position = new Vector3(transform.position.x, currentY, transform.position.z);
             elapsedTime += Time.deltaTime;
 
             yield return null;
         }
 
-        transform.position = new Vector3(transform.localPosition.x, targetPosition, transform.localPosition.z);
+        transform.position = new Vector3(transform.position.x, targetPosition, transform.position.z);
     }
 
     public void HammerUp()
@@ -80,7 +94,7 @@ public class Martillo : MonoBehaviour
 
     IEnumerator MoveUp()
     {
-        float startY = transform.localPosition.y;
+        float startY = transform.position.y;
         float targetPosition = 1;
 
         float elapsedTime = 0f;
@@ -88,13 +102,13 @@ public class Martillo : MonoBehaviour
         while (elapsedTime < 0.16f)
         {
             float currentY = Mathf.Lerp(startY, targetPosition, elapsedTime / 0.16f);
-            transform.localPosition = new Vector3(transform.localPosition.x, currentY, transform.localPosition.z);
+            transform.position = new Vector3(transform.position.x, currentY, transform.position.z);
             elapsedTime += Time.deltaTime;
 
             yield return null;
         }
 
-        transform.position = new Vector3(transform.localPosition.x, targetPosition, transform.localPosition.z);
+        transform.position = new Vector3(transform.position.x, targetPosition, transform.position.z);
     }
 
     public void TakeDamage(int amount)
