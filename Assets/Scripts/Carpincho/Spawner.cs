@@ -60,8 +60,7 @@ public class Spawner : MonoBehaviour
     void SpawnEnemy(GameObject enemyPrefab)
     {
         Vector3 playerPos = this.player.transform.position;
-        Vector3 spawnPos = playerPos;
-        
+        Vector3 spawnPos = playerPos; 
 
         if (Random.Range(0, 2) == 0)
             spawnPos.x += Camera.main.pixelWidth / 45;
