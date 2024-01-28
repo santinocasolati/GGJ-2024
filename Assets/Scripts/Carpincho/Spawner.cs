@@ -13,6 +13,8 @@ public class Spawner : MonoBehaviour
     private float timeSinceNoEnemies = 6f;
     private int waveNumber = 0;
 
+    private bool waveCleared = true;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Martillo>();
@@ -27,8 +29,8 @@ public class Spawner : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
-        if (timeSinceNoEnemies > spawnInterval && waveNumber < 3)
-        {
+        if (timeSinceNoEnemies > spawnInterval && waveNumber <= 3)
+        { 
             parachuteInterval--;
 
             for (int i = 0; i < prefabs.Count-1; i++)
@@ -39,11 +41,11 @@ public class Spawner : MonoBehaviour
                     SpawnEnemy(prefabToSpawn);
 
                 timeSinceNoEnemies = 0.0f;
-                torretaCounter++;
-                waveNumber++;
+                torretaCounter += 3;
+                waveCleared = false;
             }
         }
-        /*else if (timeSinceNoEnemies > spawnInterval && waveNumber == 3)
+        /*else if (timeSinceNoEnemies > spawnInterval && waveNumber == 4)
         {
             SpawnEnemy(bossPrefab);
             waveCleared = false;
@@ -52,7 +54,21 @@ public class Spawner : MonoBehaviour
         }*/
 
         if (GameObject.FindGameObjectWithTag("Enemy") == null)
+        {
+            if (!waveCleared)
+            {
+                waveCleared = true;
+                GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+                if (waveNumber >= 3)
+                    gameManager.EndGame();
+                else
+                {
+                    waveNumber++;
+                    gameManager.ChangeArea(waveNumber);
+                }
+            }
             timeSinceNoEnemies += Time.deltaTime;
+        }  
     }
 
     IEnumerator SpawnCarpinchoParacaidistaRoutine()

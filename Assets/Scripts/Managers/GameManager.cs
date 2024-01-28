@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void EndGame()
+    {
+        LevelManager.instance.ChangeScene(5);
+    }
+
     private void Update()
     {
 #if UNITY_EDITOR
