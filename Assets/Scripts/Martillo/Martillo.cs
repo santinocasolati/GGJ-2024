@@ -11,7 +11,7 @@ public class Martillo : MonoBehaviour
     [SerializeField] Vector2 sens;
     private Animator animator;
 
-    private bool canAttack = true;
+    public bool canAttack = true;
 
     // Start is called before the first frame update
     void Start()
@@ -95,7 +95,7 @@ public class Martillo : MonoBehaviour
     IEnumerator MoveUp()
     {
         float startY = transform.position.y;
-        float targetPosition = 1;
+        float targetPosition = 2.5f;
 
         float elapsedTime = 0f;
 

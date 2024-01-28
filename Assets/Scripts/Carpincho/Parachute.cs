@@ -8,7 +8,6 @@ public class Parachute : Enemy
     [SerializeField] private float radius;
 
     [SerializeField] public GameObject particleEffect;
-    [SerializeField] public float dmg;
 
     [SerializeField] AudioClip audioExplosion;
 
@@ -22,12 +21,12 @@ public class Parachute : Enemy
         {
             if (hit.tag == "Player")
             {
-                hit.gameObject.SendMessage("TakeDamage", dmg);
+                hit.gameObject.SendMessage("TakeDamage", damage);
             }
         }
     }
 
-    private void Die()
+    private new void Die()
     {
         AudioManager.instance.PlaySound(audioExplosion);
         Instantiate(particleEffect, transform.position, transform.rotation);
