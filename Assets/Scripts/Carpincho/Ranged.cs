@@ -15,7 +15,7 @@ public class Ranged : Enemy
     private float range = 5f;
     private float projectileSpeed = 2f;
     private Animator animator;
-
+    private Quaternion rot;
     [SerializeField] AudioClip shotSound;
 
     private void Awake()
@@ -32,12 +32,12 @@ public class Ranged : Enemy
 
             this.KeepDistances(distanceToPlayer, shouldMoveToPlayer);
 
-            if (distanceToPlayer > 3f)
+            if (distanceToPlayer > 3f || distanceToPlayer < 0.5f)
             {
-                Quaternion rot = Quaternion.LookRotation(player.transform.position - transform.position);
+                rot = Quaternion.LookRotation(player.transform.position - transform.position);
                 rot.eulerAngles = new Vector3(0, rot.eulerAngles.y, 0);
-                transform.rotation = rot;
             }
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime);
 
             bool isWalking = false;
 
@@ -47,9 +47,7 @@ public class Ranged : Enemy
                 isWalking = true;
             }
             else if (shouldMoveToPlayer && attackTimer >= attackDelay)
-            {
                 this.Attack();
-            }
 
             animator.SetBool("Walk", isWalking);
 

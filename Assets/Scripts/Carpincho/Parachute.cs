@@ -20,9 +20,7 @@ public class Parachute : Enemy
         foreach (Collider hit in colliders)
         {
             if (hit.tag == "Player")
-            {
                 hit.gameObject.SendMessage("TakeDamage", damage);
-            }
         }
     }
 
@@ -36,7 +34,7 @@ public class Parachute : Enemy
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag != "Parachute")
         {
             Attack();
             Die();

@@ -9,9 +9,9 @@ public class Spawner : MonoBehaviour
     private Martillo player;
     private int torretaCounter = 3;
     private const float spawnInterval = 5f;
+    private float parachuteInterval = 6f;
     private float timeSinceNoEnemies = 6f;
     private int waveNumber = 0;
-    bool waveCleared = true;
 
     private void Start()
     {
@@ -29,6 +29,8 @@ public class Spawner : MonoBehaviour
         }
         if (timeSinceNoEnemies > spawnInterval && waveNumber < 3)
         {
+            parachuteInterval--;
+
             for (int i = 0; i < prefabs.Count-1; i++)
             {
                 GameObject prefabToSpawn = prefabs[i];
@@ -37,11 +39,17 @@ public class Spawner : MonoBehaviour
                     SpawnEnemy(prefabToSpawn);
 
                 timeSinceNoEnemies = 0.0f;
-                waveCleared = false;
                 torretaCounter++;
                 waveNumber++;
             }
         }
+        /*else if (timeSinceNoEnemies > spawnInterval && waveNumber == 3)
+        {
+            SpawnEnemy(bossPrefab);
+            waveCleared = false;
+            timeSinceNoEnemies = 0.0f;
+            waveNumber++;
+        }*/
 
         if (GameObject.FindGameObjectWithTag("Enemy") == null)
             timeSinceNoEnemies += Time.deltaTime;
@@ -51,7 +59,7 @@ public class Spawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(parachuteInterval);
             SpawnEnemy(prefabs.Find(prefab => prefab.name == "CarpinchoParachute"));
         }
     }
@@ -78,6 +86,6 @@ public class Spawner : MonoBehaviour
             spawnPos.y = 5f;
         }
 
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity, GameObject.Find("Enemies").transform);
+        Instantiate(enemyPrefab, spawnPos, Quaternion.Euler(new Vector3(0,180,0)), GameObject.Find("Enemies").transform);
     }
 }

@@ -36,20 +36,9 @@ public class Martillo : MonoBehaviour
         worldPos.y = 2.5f;
         worldPos.z += movement.z;
         this.transform.position = worldPos;
-
-
-        //Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
-
-        //Vector3 worldPos = Camera.main.ScreenToWorldPoint(mousePos);
-        //worldPos.y = 1f;
-        //worldPos.x += offset.x;
-        //worldPos.z += offset.y;
-        //this.transform.position = worldPos;
         
         if (Input.GetMouseButtonDown(0) && canAttack)
-        {
             this.Attack();
-        }
     }
     public void Attack()
     {
@@ -117,6 +106,11 @@ public class Martillo : MonoBehaviour
 
         if (health <= 0)
             Die();
+    }
+
+    public void Heal()
+    {
+        lifeBar.GetComponent<LifeBar>().Heal(20);
     }
     private void Die()
     {

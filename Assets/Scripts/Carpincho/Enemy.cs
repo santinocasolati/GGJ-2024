@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     protected void ChanceToDropHeart()
     {
-        if (Random.value < 0.1f)
-            Instantiate(corazon, transform.position + new Vector3(0,0.3f,0), Quaternion.identity);
+        //if (Random.value < 0.2f)
+            Instantiate(corazon, transform.position + new Vector3(0,0.5f,0), Quaternion.identity);
     }
 }

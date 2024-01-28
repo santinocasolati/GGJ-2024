@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  corazon: {fileID: 100000, guid: 901490205d4d95e4d8fd461462b7c61a, type: 3}
+  corazon: {fileID: 3140042949808891336, guid: e6f53ac51a0a8b14886156681c890d1b, type: 3}
   shootPosition: {fileID: 1890489793382753913}
   projectile: {fileID: 2249822878936042306, guid: 0ba6a41a0f9d0344ba2bc206ec518a5e,
     type: 3}

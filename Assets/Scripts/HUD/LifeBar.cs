@@ -28,5 +28,7 @@ public class LifeBar : MonoBehaviour
     public void Heal(int quantity)
     {
         this.currentHealth += (float)quantity;
+        if(currentHealth > maxHealth)
+            currentHealth = maxHealth;
     }
 }
