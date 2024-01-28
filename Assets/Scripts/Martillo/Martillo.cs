@@ -123,7 +123,7 @@ public class Martillo : MonoBehaviour
         transition.SetActive(true);
         MainMenuTransition tr = transition.GetComponent<MainMenuTransition>();
         tr.targetCameraPosition.x = Camera.main.transform.position.x;
-        tr.StartTransition(2);
+        tr.StartTransition(3);
 
         Destroy(this.gameObject);
     }
