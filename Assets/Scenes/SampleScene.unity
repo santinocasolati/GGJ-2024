@@ -843,7 +843,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8615a87aef58dc04d8cd6a8b89da8334,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.20665455
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8615a87aef58dc04d8cd6a8b89da8334,
         type: 3}
@@ -889,6 +889,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: tent_detailedClosed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155522629629792290, guid: 8615a87aef58dc04d8cd6a8b89da8334,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.012
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
