@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Parachute : Enemy
 {
-    public GameObject bomber;
-    public float radius = 5.0f;
+    [SerializeField] private GameObject bomber;
+    [SerializeField] private float radius;
 
     [SerializeField] public GameObject particleEffect;
     [SerializeField] public float dmg;
@@ -14,12 +14,13 @@ public class Parachute : Enemy
     {
         Vector3 explosionPos = bomber.transform.position;
         Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
-        
+
 
         foreach (Collider hit in colliders)
         {
             if (hit.tag == "Player")
             {
+                Debug.Log("Oh oh, te estoy dañando");
                 hit.gameObject.SendMessage("TakeDamage", dmg);
             }
         }
@@ -32,12 +33,18 @@ public class Parachute : Enemy
     }
 
 
-    private void OnTriggerEnter(Collider other)
-    { 
-        if (other.gameObject.tag == "Floor" || other.gameObject.tag == "Player")
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Player")
         {
             Attack();
             Explode();
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position, radius);
     }
 }
