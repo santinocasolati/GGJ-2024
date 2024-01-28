@@ -68,9 +68,9 @@ public class Spawner : MonoBehaviour
         if (Random.Range(0, 2) == 0)
             spawnPos.x += Camera.main.pixelWidth / 45;
         else
-            spawnPos.x -= Camera.main.pixelWidth / 45;
+            spawnPos.x -= Camera.main.pixelWidth / 45; 
 
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        Instantiate(enemyPrefab, spawnPos, Quaternion.identity, GameObject.Find("Enemies").transform);
     }
 
 

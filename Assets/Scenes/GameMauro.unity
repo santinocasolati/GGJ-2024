@@ -870,16 +870,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LifeBarPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 7874316827470955288, guid: 771b287db383b5d44b35137ae347fa69,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7874316827470955288, guid: 771b287db383b5d44b35137ae347fa69,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
