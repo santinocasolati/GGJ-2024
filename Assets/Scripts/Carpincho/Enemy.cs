@@ -16,8 +16,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        AudioSource enemyAudio = GetComponent<AudioSource>();
-        enemyAudio.Play();
+        GetComponent<CarpinchoDie>().PlaySound();
         ChanceToDropHeart();
         Destroy(this.gameObject);
     }
@@ -28,11 +27,9 @@ public class Enemy : MonoBehaviour
             Instantiate(corazon, transform.position + new Vector3(0,0.3f,0), Quaternion.identity);
     }
 
-    private void OnTriggerEnter(Collider other) //o oncollision enter ni idea, probé las dos
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject == player)
-        {
+        if (collision.gameObject == player.gameObject)
             Die();
-        }
     }
 }

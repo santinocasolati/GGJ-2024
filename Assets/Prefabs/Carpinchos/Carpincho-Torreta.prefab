@@ -81,6 +81,7 @@ MonoBehaviour:
   shootPosition: {fileID: 1890489793382753913}
   projectile: {fileID: 2249822878936042306, guid: 0ba6a41a0f9d0344ba2bc206ec518a5e,
     type: 3}
+  shotSound: {fileID: 8300000, guid: 19e7c92cfe34a9548a820b0c7b2c6d1b, type: 3}
 --- !u!114 &5544390628970161468
 MonoBehaviour:
   m_ObjectHideFlags: 0

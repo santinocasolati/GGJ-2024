@@ -16,6 +16,8 @@ public class Ranged : Enemy
     private float projectileSpeed = 2f;
     private Animator animator;
 
+    [SerializeField] AudioClip shotSound;
+
     private void Awake()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
@@ -84,6 +86,7 @@ public class Ranged : Enemy
     }
     private void Attack()
     {
+        AudioManager.instance.PlaySound(shotSound);
         Projectile.ThrowProjectile(this.projectile, this.shootPosition.position, this.transform.rotation, this.player.transform.position, this.projectileSpeed, this.damage);
         attackTimer = 0f;
     }

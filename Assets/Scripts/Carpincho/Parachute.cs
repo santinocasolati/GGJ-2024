@@ -10,6 +10,8 @@ public class Parachute : Enemy
     [SerializeField] public GameObject particleEffect;
     [SerializeField] public float dmg;
 
+    [SerializeField] AudioClip audioExplosion;
+
     private void Attack()
     {
         Vector3 explosionPos = bomber.transform.position;
@@ -26,8 +28,9 @@ public class Parachute : Enemy
         }
     }
 
-    private void Explode()
+    private void Die()
     {
+        AudioManager.instance.PlaySound(audioExplosion);
         Instantiate(particleEffect, transform.position, transform.rotation);
         Destroy(gameObject);
     }
@@ -38,7 +41,7 @@ public class Parachute : Enemy
         if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Player")
         {
             Attack();
-            Explode();
+            Die();
         }
     }
 

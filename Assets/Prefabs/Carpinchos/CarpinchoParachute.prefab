@@ -56,6 +56,7 @@ MonoBehaviour:
   particleEffect: {fileID: 7744676672056235082, guid: ffc56d132993eba46b4827223f364ea0,
     type: 3}
   dmg: 1
+  audioExplosion: {fileID: 8300000, guid: 556d9386ac9d67c4ea082e3764e4cef5, type: 3}
 --- !u!65 &6009063291266931966
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -112,7 +113,7 @@ ConstantForce:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7947014324814092872}
   m_Enabled: 1
-  m_Force: {x: 0, y: -1, z: 0}
+  m_Force: {x: 0, y: -0.1, z: 0}
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
