@@ -6,6 +6,7 @@ using UnityEngine.Video;
 public class IntroEnd : MonoBehaviour
 {
     private VideoPlayer vid;
+    public int nextScene;
 
     private void Start()
     {
@@ -15,6 +16,6 @@ public class IntroEnd : MonoBehaviour
 
     private void OnVideoEnd(VideoPlayer vp)
     {
-        LevelManager.instance.ChangeScene(2);
+        LevelManager.instance.ChangeScene(nextScene);
     }
 }
