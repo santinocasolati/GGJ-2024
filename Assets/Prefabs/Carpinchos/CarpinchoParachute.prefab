@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6009063291266931966}
   - component: {fileID: 7114532375825046921}
   - component: {fileID: 5282525621146627752}
+  - component: {fileID: 1854458100562566006}
   m_Layer: 0
   m_Name: CarpinchoParachute
   m_TagString: Untagged
@@ -115,6 +116,19 @@ ConstantForce:
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
+--- !u!114 &1854458100562566006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7947014324814092872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f610c6719e50b61409c0ed2fe7ce9a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundList: []
 --- !u!1001 &6862225954461874640
 PrefabInstance:
   m_ObjectHideFlags: 0

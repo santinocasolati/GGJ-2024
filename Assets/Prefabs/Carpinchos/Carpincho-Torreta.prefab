@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6845011950626041257}
   - component: {fileID: 5664121858951821711}
+  - component: {fileID: 5544390628970161468}
   m_Layer: 0
   m_Name: Carpincho-Torreta
   m_TagString: Enemy
@@ -80,6 +81,19 @@ MonoBehaviour:
   shootPosition: {fileID: 1890489793382753913}
   projectile: {fileID: 2249822878936042306, guid: 0ba6a41a0f9d0344ba2bc206ec518a5e,
     type: 3}
+--- !u!114 &5544390628970161468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5384510026854900613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f610c6719e50b61409c0ed2fe7ce9a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundList: []
 --- !u!1001 &2343269290922269743
 PrefabInstance:
   m_ObjectHideFlags: 0
