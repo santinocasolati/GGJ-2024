@@ -22,7 +22,6 @@ public class Parachute : Enemy
         {
             if (hit.tag == "Player")
             {
-                Debug.Log("Oh oh, te estoy dañando");
                 hit.gameObject.SendMessage("TakeDamage", dmg);
             }
         }
@@ -43,11 +42,5 @@ public class Parachute : Enemy
             Attack();
             Die();
         }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, radius);
     }
 }

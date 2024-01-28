@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    protected Martillo player;
+    public Martillo player;
     [SerializeField] protected GameObject corazon;
     protected int damage = 10;
     protected float attackTimer = 2f;
@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Martillo>();
     }
 
-    private void Die()
+    public void Die()
     {
         GetComponent<CarpinchoDie>().PlaySound();
         ChanceToDropHeart();
@@ -25,11 +25,5 @@ public class Enemy : MonoBehaviour
     {
         if (Random.value < 0.1f)
             Instantiate(corazon, transform.position + new Vector3(0,0.3f,0), Quaternion.identity);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject == player.gameObject)
-            Die();
     }
 }
