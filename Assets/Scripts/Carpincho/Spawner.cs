@@ -45,13 +45,14 @@ public class Spawner : MonoBehaviour
                 waveCleared = false;
             }
         }
-        /*else if (timeSinceNoEnemies > spawnInterval && waveNumber == 4)
+        else if (timeSinceNoEnemies > spawnInterval && waveNumber == 4)
         {
+            parachuteInterval = 4f;
             SpawnEnemy(bossPrefab);
             waveCleared = false;
             timeSinceNoEnemies = 0.0f;
             waveNumber++;
-        }*/
+        }
 
         if (GameObject.FindGameObjectWithTag("Enemy") == null)
         {
@@ -59,8 +60,8 @@ public class Spawner : MonoBehaviour
             {
                 waveCleared = true;
                 GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-                if (waveNumber >= 3)
-                    gameManager.EndGame();
+                if (waveNumber >= 4)
+                    Destroy(this.gameObject);
                 else
                 {
                     waveNumber++;

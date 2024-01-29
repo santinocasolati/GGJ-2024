@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 349686084911299119}
   - component: {fileID: 4900856516116430159}
   - component: {fileID: 1700445658004878146}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Martillo
   m_TagString: Player
   m_Icon: {fileID: 0}

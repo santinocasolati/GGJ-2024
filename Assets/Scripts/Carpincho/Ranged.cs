@@ -56,14 +56,14 @@ public class Ranged : Enemy
     }
     private bool KeepDistances(float distanceToPlayer, bool shouldMoveToPlayer) {
 
-        Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, range / 2, LayerMask.GetMask("Enemy", "Player"));
+        Collider[] nearbyEnemies = Physics.OverlapSphere(transform.position, range / 2, LayerMask.GetMask("Enemy", "Player"));
 
-        foreach (Collider2D enemyCollider in nearbyEnemies)
+        foreach (Collider enemyCollider in nearbyEnemies)
         {
             float distanceToKeep;
             float distanceToEnemy = Vector3.Distance(transform.position, enemyCollider.transform.position);
 
-            if (enemyCollider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            if (enemyCollider.gameObject.tag == "Enemy")
                 distanceToKeep = range / 4;
             else
                 distanceToKeep = range / 2;
@@ -82,6 +82,7 @@ public class Ranged : Enemy
         }
         return shouldMoveToPlayer;
     }
+
     private void Attack()
     {
         AudioManager.instance.PlaySound(shotSound);

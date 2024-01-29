@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6845011950626041257}
   - component: {fileID: 5664121858951821711}
   - component: {fileID: 5544390628970161468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Carpincho-Torreta
   m_TagString: Enemy
   m_Icon: {fileID: 0}
