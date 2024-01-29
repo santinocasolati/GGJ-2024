@@ -54,7 +54,8 @@ public class Spawner : MonoBehaviour
                 waveCleared = true;
                 GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-                if (waveNumber >= 3)
+                waveNumber++;
+                if (waveNumber >= 4)
                 {
                     gameManager.Boss();
                     parachuteInterval = 5f;
@@ -64,7 +65,6 @@ public class Spawner : MonoBehaviour
                 {
                     gameManager.ChangeArea(waveNumber);
                 }
-                waveNumber++;
             }
             timeSinceNoEnemies += Time.deltaTime;
         }
