@@ -54,6 +54,10 @@ public class Martillo : MonoBehaviour
 
     public void HammerDown()
     {
+        Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+
         StartCoroutine(MoveDown());
     }
 
@@ -78,6 +82,8 @@ public class Martillo : MonoBehaviour
 
     public void HammerUp()
     {
+        Destroy(GetComponent<Rigidbody>());
+
         StartCoroutine(MoveUp());
     }
 
