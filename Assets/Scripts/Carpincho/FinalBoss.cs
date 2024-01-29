@@ -27,6 +27,8 @@ public class FinalBoss : MonoBehaviour
 
     private bool canButton = true;
 
+    [SerializeField] private AudioClip deathSound;
+
     private void Start()
     {
         ResetStates();
@@ -85,6 +87,8 @@ public class FinalBoss : MonoBehaviour
         ResetStates();
         particles.SetActive(true);
         StartCoroutine(DieAnimation());
+
+        AudioManager.instance.PlaySound(deathSound);
     }
 
     private IEnumerator DieAnimation()

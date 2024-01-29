@@ -993,8 +993,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3920112566231656352, guid: 50d4242f03281eb46b731649631781be,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920112566231656352, guid: 50d4242f03281eb46b731649631781be,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920112566231656352, guid: 50d4242f03281eb46b731649631781be,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920112566231656352, guid: 50d4242f03281eb46b731649631781be,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 631.57
+      value: 634.54
       objectReference: {fileID: 0}
     - target: {fileID: 3920112566231656352, guid: 50d4242f03281eb46b731649631781be,
         type: 3}
@@ -1004,7 +1019,7 @@ PrefabInstance:
     - target: {fileID: 3920112566231656352, guid: 50d4242f03281eb46b731649631781be,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.2
+      value: -8.24
       objectReference: {fileID: 0}
     - target: {fileID: 3920112566231656352, guid: 50d4242f03281eb46b731649631781be,
         type: 3}
@@ -1051,6 +1066,11 @@ PrefabInstance:
       propertyPath: particles
       value: 
       objectReference: {fileID: 536338886}
+    - target: {fileID: 7339064371965755692, guid: 50d4242f03281eb46b731649631781be,
+        type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: cc390698152167b49bb5708d17f03856, type: 3}
     - target: {fileID: 7339064371965755692, guid: 50d4242f03281eb46b731649631781be,
         type: 3}
       propertyPath: carpinchoBoss

@@ -402,32 +402,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Programacion
-
-    Santino Casolati - Mauro Uriarte
-
-
-
-
-    Game Design
-
-    Matias
-    Saborido
-
-
-
-
-    Level Design
-
-    Dylan Lopez El Ali
-
-
-
-
-    Musica y Sonido
-
-    Emilio
-    Cossani'
+  m_text: "Programacion\nSantino Casolati - Mauro Uriarte - Dylan L\xF3pez El Al\xED\n\n\n\nGame
+    Design\nMatias Saborido - Santino Casolati - Mauro Uriarte - Dylan L\xF3pez El
+    Al\xED\n\n\n\nLevel Design\nDylan Lopez El Ali\n\n\n\nMusica y Sonido\nEmilio
+    Cossani"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
