@@ -51,6 +51,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  carpinchoBoss: {fileID: 0}
+  animTime: 0
+  targetAnimation: 0
+  particles: {fileID: 0}
   hp: 10
   lifebar: {fileID: 0}
   redMat: {fileID: 2100000, guid: 8b1ade01ccecb9e4ba79b3ac22f85334, type: 2}

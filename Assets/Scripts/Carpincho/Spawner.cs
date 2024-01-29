@@ -46,14 +46,6 @@ public class Spawner : MonoBehaviour
                 waveCleared = false;
             }
         }
-        else if (timeSinceNoEnemies > spawnInterval && waveNumber == 4)
-        {
-            parachuteInterval = 4f;
-            SpawnEnemy(bossPrefab);
-            waveCleared = false;
-            timeSinceNoEnemies = 0.0f;
-            waveNumber++;
-        }
 
         if (GameObject.FindGameObjectWithTag("Enemy") == null)
         {
@@ -62,17 +54,17 @@ public class Spawner : MonoBehaviour
                 waveCleared = true;
                 GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-                if (waveNumber >= 4)
-                    Destroy(this.gameObject);
-
                 if (waveNumber >= 3)
+                {
                     gameManager.Boss();
-
+                    parachuteInterval = 5f;
+                    
+                }
                 else
                 {
-                    waveNumber++;
                     gameManager.ChangeArea(waveNumber);
                 }
+                waveNumber++;
             }
             timeSinceNoEnemies += Time.deltaTime;
         }

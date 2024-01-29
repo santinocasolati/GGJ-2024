@@ -83,6 +83,8 @@ public class FinalBoss : MonoBehaviour
 
     private void Die()
     {
+        Destroy(GameObject.Find("Enemies"));
+        Destroy(GameObject.Find("Spawner"));
         canButton = false;
         ResetStates();
         particles.SetActive(true);

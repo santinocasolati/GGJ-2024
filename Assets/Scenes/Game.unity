@@ -2412,6 +2412,11 @@ PrefabInstance:
       objectReference: {fileID: 1031652173}
     - target: {fileID: 349686084911299119, guid: 467e84f6df7f1a14590a2d2aa33774de,
         type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a5ee552177709604db1fb50be5768dc8, type: 3}
+    - target: {fileID: 349686084911299119, guid: 467e84f6df7f1a14590a2d2aa33774de,
+        type: 3}
       propertyPath: hammerHeight
       value: 2.5
       objectReference: {fileID: 0}
