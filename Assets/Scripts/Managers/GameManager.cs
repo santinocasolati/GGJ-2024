@@ -19,6 +19,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Boss()
+    {
+        ChangeArea(4);
+        Martillo hammer = GameObject.Find("Martillo").GetComponent<Martillo>();
+        hammer.hammerHeight = 5;
+        hammer.isBoss = true;
+    }
+
     public void EndGame()
     {
         LevelManager.instance.ChangeScene(5);
