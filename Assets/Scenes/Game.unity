@@ -1813,6 +1813,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5105133577041127297, guid: 10303e32855db4340aaffde27d34a741,
         type: 3}
+      propertyPath: bossPrefab
+      value: 
+      objectReference: {fileID: 464270619594966043, guid: 50d4242f03281eb46b731649631781be,
+        type: 3}
+    - target: {fileID: -5105133577041127297, guid: 10303e32855db4340aaffde27d34a741,
+        type: 3}
       propertyPath: prefabs.Array.size
       value: 2
       objectReference: {fileID: 0}

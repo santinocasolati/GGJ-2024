@@ -18,10 +18,8 @@ public class Parachute : Enemy
 
 
         foreach (Collider hit in colliders)
-        {
             if (hit.tag == "Player")
                 hit.gameObject.SendMessage("TakeDamage", damage);
-        }
     }
 
     private new void Die()

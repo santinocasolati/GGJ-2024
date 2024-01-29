@@ -11,8 +11,8 @@ public class Ranged : Enemy
     [SerializeField] Transform shootPosition;
     [SerializeField] GameObject projectile;
     private float speed = 1.5f;
-    private float attackDelay = 3f;
-    private float range = 5f;
+    private float attackDelay = 0;
+    private float range = 0;
     private float projectileSpeed = 2f;
     private Animator animator;
     private Quaternion rot;
@@ -21,6 +21,8 @@ public class Ranged : Enemy
     private void Awake()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
+        attackDelay = UnityEngine.Random.Range(2, 6) + UnityEngine.Random.value;
+        range = UnityEngine.Random.Range(2, 7) + UnityEngine.Random.value;
     }
 
     private void Update()
@@ -37,7 +39,7 @@ public class Ranged : Enemy
                 rot = Quaternion.LookRotation(player.transform.position - transform.position);
                 rot.eulerAngles = new Vector3(0, rot.eulerAngles.y, 0);
             }
-            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, speed * Time.deltaTime);
 
             bool isWalking = false;
 
@@ -56,14 +58,14 @@ public class Ranged : Enemy
     }
     private bool KeepDistances(float distanceToPlayer, bool shouldMoveToPlayer) {
 
-        Collider2D[] nearbyEnemies = Physics2D.OverlapCircleAll(transform.position, range / 2, LayerMask.GetMask("Enemy", "Player"));
+        Collider[] nearbyEnemies = Physics.OverlapSphere(transform.position, range / 2, LayerMask.GetMask("Enemy", "Player"));
 
-        foreach (Collider2D enemyCollider in nearbyEnemies)
+        foreach (Collider enemyCollider in nearbyEnemies)
         {
             float distanceToKeep;
             float distanceToEnemy = Vector3.Distance(transform.position, enemyCollider.transform.position);
 
-            if (enemyCollider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            if (enemyCollider.transform.parent.gameObject.tag == "Enemy")
                 distanceToKeep = range / 4;
             else
                 distanceToKeep = range / 2;
@@ -72,7 +74,9 @@ public class Ranged : Enemy
             {
                 shouldMoveToPlayer = false;
                 Vector3 directionAwayFromEnemy = (transform.position - enemyCollider.transform.position).normalized;
-                transform.Translate(directionAwayFromEnemy * speed * Time.deltaTime);
+                Vector3 newPosition = transform.position + directionAwayFromEnemy * speed * Time.deltaTime;
+
+                transform.position = Vector3.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
 
                 if (attackTimer >= attackDelay && distanceToPlayer <= range)
                     this.Attack();
@@ -82,6 +86,7 @@ public class Ranged : Enemy
         }
         return shouldMoveToPlayer;
     }
+
     private void Attack()
     {
         AudioManager.instance.PlaySound(shotSound);
