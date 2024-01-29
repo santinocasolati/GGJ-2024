@@ -8,6 +8,7 @@ public class Martillo : MonoBehaviour
     private int health = 100;
     [SerializeField] GameObject lifeBar;
     [SerializeField] GameObject transition;
+    [SerializeField] AudioClip attackSound;
     [SerializeField] Vector2 sens;
     private Animator animator;
     public float hammerHeight = 2.5f;
@@ -73,6 +74,7 @@ public class Martillo : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
         StartCoroutine(MoveDown());
+        AudioManager.instance.PlaySound(attackSound);
     }
 
     IEnumerator MoveDown()
