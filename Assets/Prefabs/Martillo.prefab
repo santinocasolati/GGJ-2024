@@ -301,6 +301,7 @@ MonoBehaviour:
   lifeBar: {fileID: 0}
   transition: {fileID: 0}
   sens: {x: 0.1, y: 0.1}
+  canAttack: 1
 --- !u!65 &4900856516116430159
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -320,8 +321,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.6339896, y: 8.898615, z: 1.7202003}
-  m_Center: {x: 0.014507769, y: -3.6237254, z: 0.02007071}
+  m_Size: {x: 3.6339896, y: 9.107874, z: 2.3527572}
+  m_Center: {x: 0.01450777, y: -3.5190973, z: -0.012724177}
 --- !u!95 &1700445658004878146
 Animator:
   serializedVersion: 5

@@ -13,14 +13,12 @@ public class Martillo : MonoBehaviour
 
     public bool canAttack = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         CursorManager.instance.HideCursor();
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * sens.x;

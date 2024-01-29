@@ -46,4 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabs:
   - {fileID: 5384510026854900613, guid: e5f37d41d837e514899c20ab723123e9, type: 3}
+  - {fileID: 7947014324814092872, guid: 7cb21e6b0c5f5754e8a5305a73a00a68, type: 3}
   bossPrefab: {fileID: 0}
