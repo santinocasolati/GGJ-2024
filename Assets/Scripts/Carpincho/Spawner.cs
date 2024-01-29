@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,10 +31,10 @@ public class Spawner : MonoBehaviour
             return;
         }
         if (timeSinceNoEnemies > spawnInterval && waveNumber <= 3)
-        { 
+        {
             parachuteInterval--;
 
-            for (int i = 0; i < prefabs.Count-1; i++)
+            for (int i = 0; i < prefabs.Count - 1; i++)
             {
                 GameObject prefabToSpawn = prefabs[i];
 
@@ -45,13 +46,14 @@ public class Spawner : MonoBehaviour
                 waveCleared = false;
             }
         }
-        /*else if (timeSinceNoEnemies > spawnInterval && waveNumber == 4)
+        else if (timeSinceNoEnemies > spawnInterval && waveNumber == 4)
         {
+            parachuteInterval = 4f;
             SpawnEnemy(bossPrefab);
             waveCleared = false;
             timeSinceNoEnemies = 0.0f;
             waveNumber++;
-        }*/
+        }
 
         if (GameObject.FindGameObjectWithTag("Enemy") == null)
         {
@@ -59,8 +61,13 @@ public class Spawner : MonoBehaviour
             {
                 waveCleared = true;
                 GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+                if (waveNumber >= 4)
+                    Destroy(this.gameObject);
+
                 if (waveNumber >= 3)
                     gameManager.Boss();
+
                 else
                 {
                     waveNumber++;
@@ -68,7 +75,7 @@ public class Spawner : MonoBehaviour
                 }
             }
             timeSinceNoEnemies += Time.deltaTime;
-        }  
+        }
     }
 
     IEnumerator SpawnCarpinchoParacaidistaRoutine()
@@ -102,6 +109,6 @@ public class Spawner : MonoBehaviour
             spawnPos.y = 5f;
         }
 
-        Instantiate(enemyPrefab, spawnPos, Quaternion.Euler(new Vector3(0,180,0)), GameObject.Find("Enemies").transform);
+        Instantiate(enemyPrefab, spawnPos, Quaternion.Euler(new Vector3(0, 180, 0)), GameObject.Find("Enemies").transform);
     }
 }
