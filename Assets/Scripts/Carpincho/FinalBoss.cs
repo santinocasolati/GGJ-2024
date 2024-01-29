@@ -1,9 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.ParticleSystem;
 
 public class FinalBoss : MonoBehaviour
 {
+    public int damage = 1;
+
+    [SerializeField] Transform carpinchoBoss;
+    [SerializeField] float animTime;
+    [SerializeField] float targetAnimation;
+    [SerializeField] GameObject particles;
+
     [SerializeField] private float hp;
     [SerializeField] private GameObject lifebar;
     
@@ -16,32 +25,38 @@ public class FinalBoss : MonoBehaviour
     private int lastIndex = 0;
     private int randomChildIndex = 0;
 
+    private bool canButton = true;
+
     private void Start()
     {
-        //Set default state
+        ResetStates();
+    }
+
+    private void ResetStates()
+    {
         foreach (Transform childTransform in transform)
         {
             if (childTransform.tag == "HittableBoss")
             {
                 Renderer ch = childTransform.GetComponent<Renderer>();
                 ch.material = redMat;
-                Debug.Log("Estoy defaulteando");
+
+                ButtonHitDetect bh = childTransform.GetComponent<ButtonHitDetect>();
+                bh.canDamage = false;
             }
         }
     }
 
     private void Update()
     {
-        if (time >= maxTimeChange)
+        if (time >= maxTimeChange && canButton)
         {  
             while (lastIndex == randomChildIndex)
             {
-                Debug.Log("Estoy encendiendo");
                 randomChildIndex = Random.Range(1, transform.childCount);
             }
             lastIndex = randomChildIndex;
             Transform randomChild = transform.GetChild(randomChildIndex);
-            Debug.Log(randomChildIndex);
             StartCoroutine(lightButtonOn(randomChild));
             
             
@@ -52,21 +67,49 @@ public class FinalBoss : MonoBehaviour
 
     IEnumerator lightButtonOn(Transform randomChild)
     {
-        randomChild.GetComponent<Renderer>().material = greenMat;
+        Renderer rnd = randomChild.GetComponent<Renderer>();
+        ButtonHitDetect bhd = randomChild.GetComponent<ButtonHitDetect>();
+
+        rnd.material = greenMat;
+        bhd.canDamage = true;
+
         yield return new WaitForSeconds(maxTimeChange);
-        randomChild.GetComponent<Renderer>().material = redMat;
+
+        rnd.material = redMat;
+        bhd.canDamage = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void Die()
     {
-        // Collider myCollider = collision.GetContact(0).thisCollider;
-        Debug.Log(collision);
+        canButton = false;
+        ResetStates();
+        particles.SetActive(true);
+        StartCoroutine(DieAnimation());
+    }
 
-        //if (collision.gameObject.tag == "Player")
-            Debug.Log("Estoy golpeando correctamente");
-            TakeDamage(1);
-            time = 0;
-        
+    private IEnumerator DieAnimation()
+    {
+        float elapsedTime = 0;
+        Vector3 originPos = carpinchoBoss.position;
+        Vector3 targetPos = new Vector3(originPos.x, originPos.y - targetAnimation, originPos.z);
+
+        while (elapsedTime < animTime)
+        {
+            carpinchoBoss.position = Vector3.Lerp(originPos, targetPos, elapsedTime / animTime);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        particles.SetActive(false);
+
+        yield return new WaitForSeconds(1);
+
+        GameObject transition = GameObject.Find("Transition");
+        MainMenuTransition tr = transition.GetComponent<MainMenuTransition>();
+        tr.targetCameraPosition.x = Camera.main.transform.position.x;
+        tr.StartTransition(5);
     }
 
     public void TakeDamage(int amount)
@@ -76,9 +119,9 @@ public class FinalBoss : MonoBehaviour
 
         if (hp <= 0)
         {
-
+            Die();
         }
-            
-    }
 
+        ResetStates();
+    }
 }

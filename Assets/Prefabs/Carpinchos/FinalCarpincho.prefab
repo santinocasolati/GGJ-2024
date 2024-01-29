@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7543262475032378613}
@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597ddcb96caa75949ab4fbe0e9e4efbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   hp: 10
   lifebar: {fileID: 0}
   redMat: {fileID: 2100000, guid: 8b1ade01ccecb9e4ba79b3ac22f85334, type: 2}
@@ -68,6 +69,7 @@ GameObject:
   - component: {fileID: 128338234018793719}
   - component: {fileID: 916211751940816011}
   - component: {fileID: 104423676521889267}
+  - component: {fileID: 1746151110478889250}
   m_Layer: 0
   m_Name: Hit3
   m_TagString: HittableBoss
@@ -184,6 +186,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &1746151110478889250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817732549179819023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191862332c1f90a43ab284ded7a918ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDamage: 0
 --- !u!1 &5388253738638547004
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +212,7 @@ GameObject:
   - component: {fileID: 3752475188273497210}
   - component: {fileID: 2114536371679414298}
   - component: {fileID: 7576641857488215762}
+  - component: {fileID: 7346663448325274742}
   m_Layer: 0
   m_Name: Hit5
   m_TagString: HittableBoss
@@ -313,6 +329,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &7346663448325274742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5388253738638547004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191862332c1f90a43ab284ded7a918ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDamage: 0
 --- !u!1 &7178225039739052150
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +355,7 @@ GameObject:
   - component: {fileID: 7778546110297560856}
   - component: {fileID: 8556919461741267391}
   - component: {fileID: 3622401500019203004}
+  - component: {fileID: 5192467591157887114}
   m_Layer: 0
   m_Name: Hit2
   m_TagString: HittableBoss
@@ -442,6 +472,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &5192467591157887114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178225039739052150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191862332c1f90a43ab284ded7a918ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDamage: 0
 --- !u!1 &8222255376483346035
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +498,7 @@ GameObject:
   - component: {fileID: 7824570057777912827}
   - component: {fileID: 3910945083443590100}
   - component: {fileID: 4565946424412754387}
+  - component: {fileID: 1651997705545651566}
   m_Layer: 0
   m_Name: Hit1
   m_TagString: HittableBoss
@@ -571,6 +615,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &1651997705545651566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8222255376483346035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191862332c1f90a43ab284ded7a918ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDamage: 0
 --- !u!1 &8740327123591739280
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +641,7 @@ GameObject:
   - component: {fileID: 4568940508695944781}
   - component: {fileID: 4172911753070607197}
   - component: {fileID: 5273767624523119703}
+  - component: {fileID: 5389716557218894484}
   m_Layer: 0
   m_Name: Hit4
   m_TagString: HittableBoss
@@ -700,6 +758,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &5389716557218894484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8740327123591739280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191862332c1f90a43ab284ded7a918ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDamage: 0
 --- !u!1001 &8100119211205774987
 PrefabInstance:
   m_ObjectHideFlags: 0

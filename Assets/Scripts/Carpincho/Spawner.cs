@@ -60,7 +60,7 @@ public class Spawner : MonoBehaviour
                 waveCleared = true;
                 GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
                 if (waveNumber >= 3)
-                    gameManager.EndGame();
+                    gameManager.Boss();
                 else
                 {
                     waveNumber++;
