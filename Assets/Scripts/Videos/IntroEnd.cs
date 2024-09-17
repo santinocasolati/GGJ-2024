@@ -5,6 +5,8 @@ using UnityEngine.Video;
 
 public class IntroEnd : MonoBehaviour
 {
+    [SerializeField] private string videoFile;
+
     private VideoPlayer vid;
     public int nextScene;
 
@@ -12,6 +14,9 @@ public class IntroEnd : MonoBehaviour
     {
         vid = GetComponent<VideoPlayer>();
         vid.loopPointReached += OnVideoEnd;
+        vid.source = VideoSource.Url;
+        vid.url = Application.streamingAssetsPath + "/" + videoFile;
+        vid.Play();
     }
 
     private void OnVideoEnd(VideoPlayer vp)
